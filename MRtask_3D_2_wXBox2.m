@@ -7,7 +7,7 @@ if nargin==1
 end
 
 % Experiment Parameters
-nTrials = 25;
+nTrials = 100;
 practiceTrials = 10;
 
 %% Setup
@@ -162,7 +162,7 @@ DrawFormattedText(window,'Beginning trial phase.\n Press any key to continue.','
 Screen('Flip',window);
 KbWait;
 
-for i = practiceTrials+1 : nTrials
+for i = practiceTrials+1 : practiceTrials + nTrials
     RunTrial(false); 
     if kill; break; end
 end
@@ -177,6 +177,7 @@ EndTask();
 
 %% Helper Functions
     function RunTrial(practice)
+        fprintf("i = %d\n", i);
         if practice; j=randomizedPractice(i);
         else;        j=randomizedTrials(i);
         end
